@@ -1,0 +1,79 @@
+ 
+<div class="container">
+  <div class="row justify-content-center">
+          <div class="auth-container">
+              <h3 *ngIf="view === 'login'">Login to your Account</h3>
+              <h3 *ngIf="view === 'register'">Register a New Account</h3>
+              <h3 *ngIf="view === 'forgot-username'">Forgot Username</h3>
+              <h3 *ngIf="view === 'reset-password'">Reset Password</h3>
+ 
+              <form *ngIf="view === 'login'" (ngSubmit)="onLogin()">
+                  <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" [(ngModel)]="loginData.username" name="username" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" id="password" [(ngModel)]="loginData.password" name="password" required>
+                  </div>
+                  <button type="submit" class="btn btn-success btn-auth">Login</button>
+                  <a (click)="setView('register')">First Time User? Register</a>
+                  <a (click)="setView('forgot-username')">Forgot Username?</a>
+                  <a (click)="setView('reset-password')">Reset Password?</a>
+              </form>
+ 
+              <form *ngIf="view === 'register'" (ngSubmit)="onRegister()">
+                  <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" [(ngModel)]="registerData.username" name="username" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" [(ngModel)]="registerData.email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="accountNo">Account Number</label>
+                      <input type="text" class="form-control" id="accountNo" [(ngModel)]="registerData.accountNo" name="accountNo" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="authPin">Auth Pin</label>
+                      <input type="text" class="form-control" id="authPin" [(ngModel)]="registerData.authPin" name="authPin" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="loginPassword">Login Password</label>
+                      <input type="password" class="form-control" id="loginPassword" [(ngModel)]="registerData.loginPassword" name="loginPassword" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="transactionPassword">Transaction Password</label>
+                      <input type="password" class="form-control" id="transactionPassword" [(ngModel)]="registerData.transactionPassword" name="transactionPassword" required>
+                  </div>
+                  <button type="submit" class="btn btn-success btn-auth">Register</button>
+                  <a (click)="setView('login')">Already have an account? Login</a>
+              </form>
+ 
+              <form *ngIf="view === 'forgot-username'" (ngSubmit)="onForgotUsername()">
+                  <div class="form-group">
+                      <label for="authPin">Auth Pin</label>
+                      <input type="text" class="form-control" id="authPin" [(ngModel)]="forgotUsernameData.authPin" name="authPin" required>
+                  </div>
+                  <button type="submit" class="btn btn-success btn-auth">Retrieve Username</button>
+                  <a (click)="setView('login')">Back to Login</a>
+              </form>
+ 
+              <form *ngIf="view === 'reset-password'" (ngSubmit)="onResetPassword()">
+                  <div class="form-group">
+                      <label for="authPin">Auth Pin</label>
+                      <input type="text" class="form-control" id="authPin" [(ngModel)]="resetPasswordData.authPin" name="authPin" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="newPassword">New Password</label>
+                      <input type="password" class="form-control" id="newPassword" [(ngModel)]="resetPasswordData.newPassword" name="newPassword" required>
+                  </div>
+                  <button type="submit" class="btn btn-success btn-auth">Reset Password</button>
+                  <a (click)="setView('login')">Back to Login</a>
+              </form>
+          </div>
+  </div>
+</div>
+ 
+ 
